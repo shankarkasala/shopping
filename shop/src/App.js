@@ -13,10 +13,14 @@ export class App extends Component {
   
     this.state = {
        products:data.products,
-       cartItems:[],
+       cartItems:localStorage.getItem("cartItems")?JSON.parse(localStorage.getItem("cartItems")):[],
        size:"",
        sort:"",
     }
+  }
+  createOrder =(order)=>{
+    alert("hello"+ order.name)
+    console.log(order.name)
   }
   addToCart =(product)=>{
     const cartItems= this.state.cartItems.slice();
@@ -31,11 +35,12 @@ export class App extends Component {
     cartItems.push({...product, count:1})
   }
   this.setState({cartItems})
+  localStorage.setItem("cartItems",JSON.stringify(cartItems))
   }
   removeFromCart=(product)=>{
 const cartItems= this.state.cartItems.slice()
 this.setState({cartItems: cartItems.filter((x)=>x._id !== product._id)})
-
+localStorage.setItem("cartItems",JSON.stringify( cartItems.filter((x)=>x._id !== product._id)))
   }
   filterProducts =(e)=>{
     console.log(e.target.value)
@@ -81,7 +86,7 @@ this.setState((state)=>({
              <Products products={this.state.products} addToCart={this.addToCart}/>
            </div>
            <div className="sidebar">
-             <Cart cartItems={this.state.cartItems} removeFromCart={this.removeFromCart}/>
+             <Cart cartItems={this.state.cartItems} removeFromCart={this.removeFromCart} createOrder={this.createOrder}/>
            </div>
          </div>
        </main>

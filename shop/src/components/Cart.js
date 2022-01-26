@@ -38,7 +38,7 @@ export class Cart extends Component {
             <div>
                {cartItems.length===0 ? <div className="cart cart-header">cart is empty</div>
                :
-               <div className="cart cart-headr">you have {cartItems.length} in the cart {" "}</div>
+               <div className="cart cart-headr">you have {cartItems.length} item in the cart {" "}</div>
                } 
                <div className="cart">
                    <Fade left cascade>
@@ -49,6 +49,8 @@ export class Cart extends Component {
                                    <img src={item.image} alt={item.title}></img>
                                </div>
                                <div>{item.title}</div>
+                              {item ? <div>size : {item.selectsize}</div>:null}
+                              {/* <div>size : {selectsize}</div> */}
                                <div className="right">
                                    {formatCurrency(item.price)} x {item.count} {" "}
                                <button className="button button-primary" onClick={()=>this.props.removeFromCart(item)}>
@@ -58,6 +60,7 @@ export class Cart extends Component {
                               
                            </li>
                        ))}
+
                    </ul>
                    </Fade>
                </div>

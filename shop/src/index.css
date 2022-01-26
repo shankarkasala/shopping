@@ -15,7 +15,7 @@ body,input,button,select,textarea{
 .grid-container{
   display:grid;
   grid-template-areas: "header" "main" "footer";
-  grid-template-rows: 5rem 1fr 5rem;
+  grid-template-rows: 6rem 1fr 5rem;
   grid-template-columns: 1fr;
   height: 100%;
 }

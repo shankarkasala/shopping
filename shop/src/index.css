@@ -35,6 +35,8 @@ header{
   padding: 0.5rem;
 }
 header a{
+  font-weight: bold;
+  padding: 16px;
   color: #ffff;
 text-decoration: none;
 }
@@ -203,4 +205,8 @@ input{
   right: 1rem;
   top: 2.5rem;
   z-index: 1000;
+}
+
+footer {
+  font-size: 11px;
 }
